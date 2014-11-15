@@ -1,0 +1,9 @@
+//This line of code is required.
+#5|{0^4}
+
+Output(MeasureX(@0))
+OutputLn(MeasureX(@4))
+
+Output(MeasureY(@0))
+OutputLn(MeasureY(@4))
+
