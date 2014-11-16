@@ -6,10 +6,7 @@
 
 package interpreter;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  *
@@ -19,25 +16,68 @@ public class ScriptLauncher {
     
     public static void main(String[] args) throws FileNotFoundException, IOException{
         
+        //If a file isn't found (generally, if using an IDE), this variable will be the location where the program looks for the script.
+        String debugLocation = "user-defined directory";
+        
+        //Attempts to get a filename. Otherwise, it uses the script.txt file.
         String name;
         try{
             name = args[0];
         } catch(Exception e){
+            //The name of the file, if it isn't found.
             name = "script.txt";
         }
         
-        BufferedReader br = new BufferedReader(new FileReader("src/resources/script.txt"));
+        //Gets the location of the scriptLauncher class
+        String location;
+        try{
+            //Sets the file location to the String at index 1.
+            location = args[1];
+        } catch(Exception e){
+            //Grabs and adjusts the location of the file based on the Jar file's location.
+            try {
+                String fileLocation = ScriptLauncher.class.getResource("ScriptLauncher.class").getPath();
+                location = fileLocation.substring(6, fileLocation.indexOf("QuantumComputerSimulation.jar"));
+            } catch(Exception ex){
+                //This is a specific line of code that is used as a debug to manually set the script's location.
+                location = debugLocation;
+            }
+        }
         
-        /*Object[] lines = (br.lines().toArray());
         
-        for(Object line : lines)
-            Interpreter.interpretLine((String)(line));
-        */
-        String line = "";
+        
+        //Builds the BufferedReader that reads the program
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(location + name));
+        } catch(FileNotFoundException fnfe){
+            System.exit(1);
+        }
+        
+        
+        //Holds the line number
+        int num = 1;
+        
+        //Holds the line and used for error checking.
+        String line = br.readLine();
+        
+        //Loop that reads the program.
         while(line != null){
-            line = br.readLine();
-            if(line != null)
+            //Reads the line.
+            
+            try{
+                //Attempts to interpret the line.
                 Interpreter.interpretLine(line);
+            } catch(Exception e){
+                //If it can't, it informs the user of the location of the line number of the error.
+                System.err.println("Error on line " + num + ":");
+                //Outputs where the problem occured in the error.
+                e.printStackTrace();
+            }
+            //Increments the line number
+            num++;
+            
+            line = br.readLine();
         }
     }
         

@@ -4,6 +4,21 @@
 Output(MeasureX(@0))
 OutputLn(MeasureX(@4))
 
+PauliX(@0)
+
+Output(MeasureX(@0))
+OutputLn(MeasureX(@4))
+
 Output(MeasureY(@0))
 OutputLn(MeasureY(@4))
+
+Output(MeasureZ(@1))
+OutputLn(MeasureZ(@3))
+
+CNOTY(@1,@3)
+
+
+Output(MeasureZ(@1))
+OutputLn(MeasureZ(@3))
+
 

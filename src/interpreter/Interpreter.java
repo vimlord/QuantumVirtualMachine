@@ -56,6 +56,34 @@ public class Interpreter {
             for(Integer[] val : entangled)
                 System.out.println("@" + val[0] + "^@" + val[1]);
         } 
+        
+        ///////////////
+        //Logic Gates//
+        ///////////////
+        
+        //CNOT X
+        else if(line.indexOf("CNOTX(@") == 0){
+            String param = line.substring(7,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CNOT_X(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B));
+        } 
+        //CNOT Y
+        else if(line.indexOf("CNOTY(@") == 0){
+            String param = line.substring(7,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CNOT_Y(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B));
+        } 
+        //CNOT Z
+        else if(line.indexOf("CNOTZ(@") == 0){
+            String param = line.substring(7,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CNOT_Z(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B));
+        } 
+        
+        
         //PauliX
         else if(line.indexOf("PauliX(@") == 0){
             String param = line.substring(8,line.indexOf(")"));
@@ -94,6 +122,11 @@ public class Interpreter {
         
     }
     
+    /**
+     * Method used to find the output value of a given argument.
+     * @param arg The argument, method call, etc.
+     * @return The Object to output
+     */
     public static Object getValue(String arg){
         
         Object result = getIntValue(arg);
@@ -108,6 +141,11 @@ public class Interpreter {
         return null;
     }
     
+    /**
+     * Determines the integer value matching the argument, if one exists.
+     * @param arg The argument.
+     * @return The integer value, or null.
+     */
     public static Integer getIntValue(String arg){
         String code = arg;
         if(code.indexOf("MeasureX(@") == 0){
@@ -121,7 +159,13 @@ public class Interpreter {
         return null;
     }
 
-    private static Object getStringValue(String arg) {
+    /**
+     * Determines the String value matching the argument, if one exists.
+     * @param arg The argument.
+     * @return The String value, or null
+     * @Unimplemented This method will always return null.
+     */
+    public static Object getStringValue(String arg) {
         return null;
     }
     

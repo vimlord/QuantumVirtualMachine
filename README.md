@@ -24,6 +24,10 @@ The program has a limited support for Quantum Entanglement. Basically, this mean
 
 In order to allow interaction with the qubits, I created code to mimic several quantum logic gates. These allow for operations to be performed on one or more qubits.
 
+######CNOT Gates
+
+A CNOT gate is a gate that requires two qubits (or more from what I read, but I stayed with 2). The first of the two is tested to see if it equals 1, or true. If it does, it reverses the value of a second qubit. In the program, I made three that work on each axis. So, if I was to use it on the x-axis, and the first qubit measured as 1, the second would reverse itself, going from a 1 to a 0, or a 0 to a 1, depending on the case.
+
 ######Pauli Gates
 
 Three of these gates exist, an X, Y, and Z gate. These gates simply reverse the value on the dimension of the qubit given as input. For example, a qubit with a Y value equal to 0.9 would be changed so that Y equals 0.1.
@@ -59,6 +63,21 @@ In the example above, the qubit at index a would be entangled to the qubit at in
 ###Logic Gates
 
 At the moment, only two main types of logic gates exist for use. More will eventually be added, but for now, one can experiment with what has already been written.
+
+#####CNOT Gate
+
+The CNOT gate is a gate that will reverse the value of a qubit if and only if the value of another qubit is 1. The code is demonstrated below:
+
+    //CNOT X gate
+    CNOTX(@a,@b)
+    
+    //CNOT Y gate
+    CNOTY(@a,@b)
+    
+    //CNOT Z gate
+    CNOTZ(@a,@b)
+
+Where a is the qubit that is tested, and b is the qubit being changed. The CNOT gate may or may not be representative of the real-world equivalent.
 
 #####Pauli Gate
 
@@ -100,6 +119,26 @@ Measurement can be done through the use of one of three possible code segments, 
 
 For the Y and Z dimensions, replacing X with the proper value will get the desired code. Keep in mind that for measurement, it will guarantee either a 0 or 1 as output. This means that it can be used as a parameter for the Output and OutputLn code segments.
 
+##How to Use
+
+In order to use the Quantum VM, one can choose to either run it as a .JAR file, or in an IDE such as Netbeans or Eclipse.
+
+###Execute in an IDE
+
+To run the program in an IDE, one must modify the value of debugLocation in the main method of the ScriptLauncher class. It was placed on the first line of the method in order to make it easier to find. To change the default name of the file, one can change value of the name variable in the try-catch statement used to see if the user inputed a filename.
+
+###Execute as a .JAR File
+
+Because the program requires a text output to run, the QuantumComputerSimulation.jar file must be executed via the Command Prompt in Windows (or the equivalent on other Operating Systems that use Java). For command prompt, one way I know of that will work is to use the following to go to the directory of the file:
+
+    cd <directory>
+
+and then execute the program by typing in:
+
+    java -jar QuantumComputerSimulation.jar
+
+The user can also enter in parameters to change the filename and directory to read the script from (the first parameter is the filename, and the second is the directory).
+
 ##Future Plans
 
-In the future, I would like to drastically improve the amount of content available in the program. I have been looking into CNOT gates, but have had no luck so far in trying to figure out how to properly simulate them. This program will never truly be quantum, but that is not the goal. Instead, I am trying to simulate it, and give a user a general idea of what one could do with a quantum computer.
+In the future, I would like to drastically improve the amount of content available in the program. There are many dfferent things that go into making quantum computers work, and I would like to try to get as many of them into the program as I can. Just keep in mind that this program will never truly be quantum; instead, I am trying to simulate a quantum computer, and give the user a general idea of what one could do with a quantum computer.

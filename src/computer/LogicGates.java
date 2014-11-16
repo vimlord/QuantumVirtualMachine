@@ -14,6 +14,21 @@ import java.util.ArrayList;
  */
 public class LogicGates {
     
+    ///////////////////////
+    //CLASSIC LOGIC GATES//
+    ///////////////////////
+    
+    public static void NOT(Qubit q){
+        PauliX(q);
+        PauliY(q);
+        PauliZ(q);
+    }
+    
+    
+    ///////////////////////
+    //QUANTUM LOGIC GATES//
+    ///////////////////////
+    
     /**
      * Works like a NOT gate by rotating the x-axis by pi radians.
      * @param q The Qubit
@@ -68,6 +83,60 @@ public class LogicGates {
         QuantumComputer.getRegister().performEntanglementChange(indexA);
         QuantumComputer.getRegister().performEntanglementChange(indexB);
         
+    }
+    
+    /**
+     * Performs a CNOT Logic Gate. If the value of X for a is 1, it will flip b's X value.
+     * @param a
+     * @param b
+     */
+    public static void CNOT_X(Qubit a, Qubit b){
+        double prob = (1.0 + a.X)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            PauliX(b);
+    }
+    
+    /**
+     * Performs a CNOT Logic Gate. If the value of Y for a is 1, it will flip b's Y value.
+     * @param a
+     * @param b
+     */
+    public static void CNOT_Y(Qubit a, Qubit b){
+        double prob = (1.0 + a.Y)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            PauliY(b);
+    }
+    
+    /**
+     * Performs a CNOT Logic Gate. If the value of Z for a is 1, it will flip b's Z value.
+     * @param a
+     * @param b
+     */
+    public static void CNOT_Z(Qubit a, Qubit b){
+        double prob = (1.0 + a.Z)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            PauliZ(b);
     }
     
 }

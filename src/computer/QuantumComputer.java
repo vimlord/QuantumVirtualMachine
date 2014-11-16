@@ -13,9 +13,16 @@ package computer;
 public class QuantumComputer {
     private static Register register;
     
+    /**
+     * Grabs the current Quantum Register.
+     * @return The Quantum Register.
+     */
     public static Register getRegister(){ return register; }
     
-    
+    /**
+     * Sets a new Quantum Register.
+     * @param r The new Quantum Register.
+     */
     public static void setRegister(Register r){ register = r; }
     
 }
