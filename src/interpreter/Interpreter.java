@@ -61,13 +61,46 @@ public class Interpreter {
         //Logic Gates//
         ///////////////
         
+        //CCNOT X
+        else if(line.indexOf("CCNOTX(@") == 0){
+            String param = line.substring(8,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            param = param.substring(("" + A).length() + 1);
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1,param.indexOf(",")));
+            param = param.substring(("" + B).length() + 1);
+            int C = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CCNOT_X(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B),QuantumComputer.getRegister().getQubit(C));
+        }
+        
+        //CCNOT Y
+        else if(line.indexOf("CCNOTY(@") == 0){
+            String param = line.substring(8,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            param = param.substring(("" + A).length() + 1);
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1,param.indexOf(",")));
+            param = param.substring(("" + B).length() + 1);
+            int C = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CCNOT_Y(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B),QuantumComputer.getRegister().getQubit(C));
+        }
+        
+        //CCNOT Z
+        else if(line.indexOf("CCNOTZ(@") == 0){
+            String param = line.substring(8,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            param = param.substring(("" + A).length() + 1);
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1,param.indexOf(",")));
+            param = param.substring(("" + B).length() + 1);
+            int C = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CCNOT_Z(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B),QuantumComputer.getRegister().getQubit(C));
+        }
+        
         //CNOT X
         else if(line.indexOf("CNOTX(@") == 0){
             String param = line.substring(7,line.indexOf(")"));
             int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
             int B = Integer.parseInt(param.substring(param.indexOf("@")+1));
             LogicGates.CNOT_X(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B));
-        } 
+        }
         //CNOT Y
         else if(line.indexOf("CNOTY(@") == 0){
             String param = line.substring(7,line.indexOf(")"));
@@ -83,6 +116,38 @@ public class Interpreter {
             LogicGates.CNOT_Z(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B));
         } 
         
+        //CCNOT X
+        else if(line.indexOf("CSWAPX(@") == 0){
+            String param = line.substring(8,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            param = param.substring(("" + A).length() + 1);
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1,param.indexOf(",")));
+            param = param.substring(("" + B).length() + 1);
+            int C = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CSWAP_X(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B),QuantumComputer.getRegister().getQubit(C));
+        }
+        
+        //CCNOT Y
+        else if(line.indexOf("CSWAPY(@") == 0){
+            String param = line.substring(8,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            param = param.substring(("" + A).length() + 1);
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1,param.indexOf(",")));
+            param = param.substring(("" + B).length() + 1);
+            int C = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CSWAP_Y(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B),QuantumComputer.getRegister().getQubit(C));
+        }
+        
+        //CSWAP Z
+        else if(line.indexOf("CSWAPZ(@") == 0){
+            String param = line.substring(8,line.indexOf(")"));
+            int A = Integer.parseInt(param.substring(0,param.indexOf(",")));
+            param = param.substring(("" + A).length() + 1);
+            int B = Integer.parseInt(param.substring(param.indexOf("@")+1,param.indexOf(",")));
+            param = param.substring(("" + B).length() + 1);
+            int C = Integer.parseInt(param.substring(param.indexOf("@")+1));
+            LogicGates.CSWAP_Z(QuantumComputer.getRegister().getQubit(A), QuantumComputer.getRegister().getQubit(B),QuantumComputer.getRegister().getQubit(C));
+        }
         
         //PauliX
         else if(line.indexOf("PauliX(@") == 0){

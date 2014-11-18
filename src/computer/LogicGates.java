@@ -86,6 +86,66 @@ public class LogicGates {
     }
     
     /**
+     * Performs a CCNOT Logic Gate. If the value of X for a an b is 1, it will flip c's X value.
+     * @param a
+     * @param b
+     * @param c
+     */
+    public static void CCNOT_X(Qubit a, Qubit b, Qubit c){
+        double prob = (1.0 + a.X)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            CNOT_X(b,c);
+    }
+    
+    /**
+     * Performs a CCNOT Logic Gate. If the value of Y for a an b is 1, it will flip c's X value.
+     * @param a
+     * @param b
+     * @param c
+     */
+    public static void CCNOT_Y(Qubit a, Qubit b, Qubit c){
+        double prob = (1.0 + a.Y)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            CNOT_Y(b,c);
+    }
+    
+    /**
+     * Performs a CCNOT Logic Gate. If the value of X for a an b is 1, it will flip c's Z value.
+     * @param a
+     * @param b
+     * @param c
+     */
+    public static void CCNOT_Z(Qubit a, Qubit b, Qubit c){
+        double prob = (1.0 + a.Z)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            CNOT_Z(b,c);
+    }
+    
+    
+    
+    
+    /**
      * Performs a CNOT Logic Gate. If the value of X for a is 1, it will flip b's X value.
      * @param a
      * @param b
@@ -138,5 +198,63 @@ public class LogicGates {
         if(result)
             PauliZ(b);
     }
+    
+    /**
+     * Performs a CSWAP Logic Gate. If the value of X for a is 1, it will perform a Swap operation on b and c.
+     * @param a
+     * @param b
+     * @param c
+     */
+    public static void CSWAP_X(Qubit a, Qubit b, Qubit c){
+        double prob = (1.0 + a.X)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            Swap(b,c);
+    }
+    
+    /**
+     * Performs a CSWAP Logic Gate. If the value of Y for a is 1, it will perform a Swap operation on b and c.
+     * @param a
+     * @param b
+     * @param c
+     */
+    public static void CSWAP_Y(Qubit a, Qubit b, Qubit c){
+        double prob = (1.0 + a.Y)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            Swap(b,c);
+    }
+    
+    /**
+     * Performs a CSWAP Logic Gate. If the value of Z for a is 1, it will perform a Swap operation on b and c.
+     * @param a
+     * @param b
+     * @param c
+     */
+    public static void CSWAP_Z(Qubit a, Qubit b, Qubit c){
+        double prob = (1.0 + a.Z)/2.0;
+        double randVal;
+        boolean result;
+        do{
+            result = Qubit.random(4) <= prob;
+            randVal = 10 * Qubit.random(4);
+        } while(randVal < 9);
+        
+        if(result)
+            Swap(b,c);
+    }
+    
     
 }
