@@ -24,9 +24,17 @@ The program has a limited support for Quantum Entanglement. Basically, this mean
 
 In order to allow interaction with the qubits, I created code to mimic several quantum logic gates. These allow for operations to be performed on one or more qubits.
 
+######CCNOT Gates
+
+A CCNOT gate is a gate that requires three qubits. The first two of the three are tested to see if they equals 1, or true. If they do, the gate reverses the value of the third qubit. In the program, I made three versions; one for each axis. So, if I was to use it on the x-axis, and the first and second qubit measured as 1, the second would reverse itself, going from a 1 to a 0, or a 0 to a 1, depending on the case.
+
 ######CNOT Gates
 
-A CNOT gate is a gate that requires two qubits (or more from what I read, but I stayed with 2). The first of the two is tested to see if it equals 1, or true. If it does, it reverses the value of a second qubit. In the program, I made three that work on each axis. So, if I was to use it on the x-axis, and the first qubit measured as 1, the second would reverse itself, going from a 1 to a 0, or a 0 to a 1, depending on the case.
+A CNOT gate is a gate that requires two qubits. The first of the two is tested to see if it equals 1, or true. If it does, it reverses the value of a second qubit. In the program, I made three versions; one for each axis. So, if I was to use it on the x-axis, and the first qubit measured as 1, the second would reverse itself, going from a 1 to a 0, or a 0 to a 1, depending on the case.
+
+######CSWAP Gates
+
+A CSWAP gate is a gate that takes three qubits as input. If the first qubit measures as a 1, or true, it performs a Swap operation on the second and third qubit. I wrote the gates so that like the CNOT gate, it will test the first qubit on one of the three axes.
 
 ######Pauli Gates
 
